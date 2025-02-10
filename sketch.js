@@ -168,27 +168,35 @@ function draw() {
 
 // 绘制主标题
 function drawMainTitle() {
-  // 计算标题高度
-  let titleHeight = 0;
-  
   fill(255);
   noStroke();
   textAlign(CENTER, CENTER);
-  
-  // 主标题
-  textSize(map(width, 500, 2500, 20, 35));
-  let mainY = map(height, 500, 2000,5,10);
-  text("How Does the Gender Gap Vary Across STEM Majors?", width/2, mainY);
-  
-  // 副标题
-  textSize(map(width, 500, 2500, 15, 20));
+
+  let mainTitleSize = map(width, 500, 2500, 20, 35);
+  textSize(mainTitleSize);
+  let mainY = map(height, 500, 2000, 5, 10);
+
+  text("How Does the Gender Gap Vary Across STEM Majors?", width / 2, mainY);
+
+  let subTitleSize = map(width, 500, 2500, 15, 20);
+  textSize(subTitleSize);
   fill(200);
-  let subY = map(height, 500, 2000, 15, 25);
-  text("Gender Distribution of STEM Undergraduate Graduates in the XX Region for 20XX", width/2, subY);
+
+  let subY = mainY + textAscent() *7;
+
   
-  // 返回标题总高度
-  return subY + map(height, 500, 2000, 10, 20);
+  text("Gender Distribution of STEM Undergraduate Graduates in the XX Region for 20XX \n"
+      + "The visualizations illustrate gender distribution across STEM majors, highlighting the proportion of men and women in each field.\n"
+      + "This visualization is designed for educators, students, and researchers interested in gender representation in STEM education.\n"
+      + "Understanding gender disparities in STEM helps identify trends, potential biases, and opportunities for promoting inclusivity in technical fields.\n"
+      + "The main chart represents gender distribution in STEM fields using sector-based visualization.\n"
+      + "The bubble chart categorizes STEM majors, where the size of bubbles corresponds to the total number of students, and the color indicates the percentage of women.\n"
+      + "An interactive panel provides detailed statistics for selected fields.", 
+      width / 2, subY);
+
+  return subY + textAscent() * 6; 
 }
+
 
 
 // 计算扇形中心角度
@@ -440,8 +448,8 @@ function drawInfoPanel() {
   
 
   // 参数设置
-  const shapeSize = map(width, 500, 2500, 5, 30);
-  const shapesPerRow = 50;
+  const shapeSize = map(width, 100, 4500, 5, 20);
+  const shapesPerRow = 100;
   const maxShapes = 100;
   const baseY = panelY;
 
